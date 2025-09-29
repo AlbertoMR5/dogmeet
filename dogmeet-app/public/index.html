@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DogMeet - La red social para perros y sus dueños</title>
+    
+    <!-- Fuentes de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Axios para peticiones HTTP -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="header-dogs">
+                <i class="fas fa-dog"></i>
+                <i class="fas fa-dog"></i>
+                <i class="fas fa-dog"></i>
+                <i class="fas fa-dog"></i>
+                <i class="fas fa-dog"></i>
+            </div>
+            <h1>DogMeet</h1>
+            <p class="tagline">La comunidad canina más completa para dueños de perros</p>
+        </header>
+        
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="profile">Mi Perfil</button>
+            <button class="tab-btn" data-tab="map">Mapa Pipicanes</button>
+            <button class="tab-btn" data-tab="match">Buscar Amigos</button>
+            <button class="tab-btn" data-tab="pros">Profesionales</button>
+            <button class="tab-btn" data-tab="magazine">Revista Canina</button>
+            <button class="tab-btn" data-tab="events">Eventos</button>
+        </nav>
+        
+        <!-- Sección Perfil de Perro -->
+        <section class="tab-content active" id="profile">
+            <h2 class="section-title">Perfil de Max</h2>
+            
+            <div class="card">
+                <div class="dog-profile">
+                    <div class="dog-photos">
+                        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Foto de Max" class="main-photo" id="main-dog-photo">
+                        <div class="photo-thumbnails">
+                            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Thumbnail" class="thumbnail" onclick="changeMainPhoto(this)">
+                            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Thumbnail" class="thumbnail" onclick="changeMainPhoto(this)">
+                            <img src="https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Thumbnail" class="thumbnail" onclick="changeMainPhoto(this)">
+                            <i class="fas fa-plus thumbnail add-photo"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="dog-info">
+                        <h3 class="dog-name">Max</h3>
+                        <span class="dog-breed">Golden Retriever</span>
+                        
+                        <p><strong>Edad:</strong> 3 años</p>
+                        <p><strong>Dueño:</strong> María López</p>
+                        
+                        <div class="compatibility">
+                            <div class="compat-item active">
+                                <i class="fas fa-mars" style="font-size: 1.5rem; margin-bottom: 5px;"></i>
+                                <p>Se lleva bien con machos</p>
+                            </div>
+                            <div class="compat-item active">
+                                <i class="fas fa-venus" style="font-size: 1.5rem; margin-bottom: 5px;"></i>
+                                <p>Se lleva bien con hembras</p>
+                            </div>
+                        </div>
+                        
+                        <h4 style="margin: 20px 0 10px;">Pipicanes favoritos</h4>
+                        <ul>
+                            <li>Parque del Retiro, Madrid</li>
+                            <li>Parque Juan Carlos I, Madrid</li>
+                            <li>Parque de Berlín, Madrid</li>
+                        </ul>
+                        
+                        <button class="btn" style="margin-top: 20px;">
+                            <i class="fas fa-edit"></i> Editar Perfil
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Certificados</h2>
+            
+            <div class="card">
+                <div class="certificates">
+                    <div class="cert-card">
+                        <div class="cert-title">Certificado Veterinario</div>
+                        <p>Válido hasta: 15/12/2024</p>
+                        <p style="margin-top: 10px;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Actualizado</p>
+                    </div>
+                    
+                    <div class="cert-card">
+                        <div class="cert-title">Seguro de Responsabilidad Civil</div>
+                        <p>Válido hasta: 30/11/2024</p>
+                        <p style="margin-top: 10px;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Actualizado</p>
+                    </div>
+                    
+                    <div class="cert-card">
+                        <div class="cert-title">Licencia PPP</div>
+                        <p>Válido hasta: 10/10/2025</p>
+                        <p style="margin-top: 10px;"><i class="fas fa-exclamation-triangle" style="color: var(--primary);"></i> Pendiente de renovación</p>
+                    </div>
+                    
+                    <div class="cert-card">
+                        <div class="cert-title">Certificado de Adiestramiento</div>
+                        <p>Nivel: Avanzado</p>
+                        <button class="btn" style="margin-top: 10px; padding: 8px 15px; font-size: 0.9rem;">
+                            Subir certificado
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección Mapa de Pipicanes -->
+        <section class="tab-content" id="map">
+            <h2 class="section-title">Mapa de Pipicanes</h2>
+            
+            <div class="card">
+                <div class="map-container">
+                    <div id="map" style="height: 100%; width: 100%; background: linear-gradient(45deg, #a8e6cf, #dcedc1); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: var(--dark); font-weight: 600;">
+                        [Mapa interactivo con pipicanes de España]
+                    </div>
+                    
+                    <div class="map-overlay">
+                        <h3 style="margin-bottom: 10px;">Pipicanes cercanos</h3>
+                        <div class="pipican-list">
+                            <div class="pipican-item">
+                                <strong>Parque del Retiro</strong>
+                                <p>Ocupación: Media (45%)</p>
+                                <p>Horas pico: 10:00-12:00, 18:00-20:00</p>
+                            </div>
+                            <div class="pipican-item">
+                                <strong>Parque Juan Carlos I</strong>
+                                <p>Ocupación: Baja (25%)</p>
+                                <p>Horas pico: 11:00-13:00, 19:00-21:00</p>
+                            </div>
+                            <div class="pipican-item">
+                                <strong>Parque de Berlín</strong>
+                                <p>Ocupación: Alta (75%)</p>
+                                <p>Horas pico: 09:00-11:00, 17:00-19:00</p>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-accent" style="margin-top: 15px; width: 100%;">
+                            <i class="fas fa-map-marker-alt"></i> Estoy en este pipican
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección Buscar Amigos -->
+        <section class="tab-content" id="match">
+            <h2 class="section-title">Buscar Amigos Caninos</h2>
+            
+            <div class="card">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: center; gap: 15px;">
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-mars"></i> Machos
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-venus"></i> Hembras
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-paw"></i> Todos
+                        </button>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: center;">
+                    <div class="dog-card">
+                        <img src="https://images.unsplash.com/photo-1517423738875-5ce310acd3da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Luna" style="width: 100%; height: 300px; object-fit: cover; border-radius: 15px;">
+                        <h3 style="margin: 15px 0 5px;">Luna</h3>
+                        <span class="dog-breed" style="background-color: var(--primary);">Border Collie</span>
+                        
+                        <div style="margin: 15px 0; display: flex; justify-content: center; gap: 10px;">
+                            <div class="compat-item active" style="padding: 5px 10px;">
+                                <i class="fas fa-mars"></i> Machos
+                            </div>
+                            <div class="compat-item" style="padding: 5px 10px; background-color: #ffcccc;">
+                                <i class="fas fa-venus"></i> Hembras
+                            </div>
+                        </div>
+                        
+                        <p><strong>Pipican favorito:</strong> Parque del Retiro</p>
+                        
+                        <div style="display: flex; justify-content: center; gap: 20px; margin: 20px 0;">
+                            <button class="btn" style="background-color: #ff6b6b; padding: 15px 25px; font-size: 1.2rem;">
+                                <i class="fas fa-times"></i> No
+                            </button>
+                            <button class="btn" style="background-color: var(--secondary); padding: 15px 25px; font-size: 1.2rem;">
+                                <i class="fas fa-heart"></i> Sí
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección Profesionales -->
+        <section class="tab-content" id="pros">
+            <h2 class="section-title">Profesionales Caninos</h2>
+            
+            <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
+                <button class="btn btn-secondary">Adiestradores</button>
+                <button class="btn btn-secondary">Cuidadores</button>
+                <button class="btn btn-secondary">Veterinarios</button>
+                <button class="btn btn-secondary">Paseadores</button>
+            </div>
+            
+            <div class="marketplace">
+                <div class="pro-card">
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Adiestrador" class="pro-photo">
+                    <div class="pro-info">
+                        <h3 class="pro-name">Carlos Rodríguez</h3>
+                        <div class="pro-specialty">Adiestrador Profesional</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.5 (128 reseñas)</span>
+                        </div>
+                        <p>Especialista en modificación de conducta y obediencia avanzada. Certificado por la EDP.</p>
+                        <button class="btn" style="width: 100%; margin-top: 15px;">
+                            <i class="fas fa-calendar-check"></i> Reservar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="pro-card">
+                    <img src="https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Cuidadora" class="pro-photo">
+                    <div class="pro-info">
+                        <h3 class="pro-name">Laura Martínez</h3>
+                        <div class="pro-specialty">Cuidadora Profesional</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>5.0 (92 reseñas)</span>
+                        </div>
+                        <p>Cuidados en casa con jardín. Experiencia con perros mayores y medicación.</p>
+                        <button class="btn" style="width: 100%; margin-top: 15px;">
+                            <i class="fas fa-calendar-check"></i> Reservar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="pro-card">
+                    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Paseador" class="pro-photo">
+                    <div class="pro-info">
+                        <h3 class="pro-name">Javier López</h3>
+                        <div class="pro-specialty">Paseador Profesional</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>4.0 (67 reseñas)</span>
+                        </div>
+                        <p>Paseos en grupo y individuales. Zonas verdes y parques caninos.</p>
+                        <button class="btn" style="width: 100%; margin-top: 15px;">
+                            <i class="fas fa-calendar-check"></i> Reservar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card" style="margin-top: 30px;">
+                <h3 style="margin-bottom: 15px;">¿Cómo funciona nuestro sistema de pagos seguros?</h3>
+                <ol style="padding-left: 20px; line-height: 2;">
+                    <li>Selecciona el profesional y reserva el servicio</li>
+                    <li>Paga de forma segura a través de nuestra plataforma</li>
+                    <li>Nosotros retenemos el pago hasta que el servicio se complete satisfactoriamente</li>
+                    <li>Tras la devolución de tu perro, liberamos el pago al profesional</li>
+                </ol>
+            </div>
+        </section>
+        
+        <!-- Sección Revista Canina -->
+        <section class="tab-content" id="magazine">
+            <div class="magazine-section">
+                <h2 class="section-title" style="color: white; border-color: var(--accent); text-align: center;">Revista Canina</h2>
+                
+                <div class="card" style="background-color: rgba(255,255,255,0.9);">
+                    <h3 style="text-align: center; margin-bottom: 20px;">Raza de la semana: Golden Retriever</h3>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                        <div style="flex: 1; min-width: 300px;">
+                            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Golden Retriever" style="width: 100%; border-radius: 15px;">
+                        </div>
+                        <div style="flex: 1; min-width: 300px;">
+                            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                                <div style="flex: 1; background-color: var(--light); padding: 15px; border-radius: 10px; text-align: center;">
+                                    <h4>Energía</h4>
+                                    <div style="display: flex; justify-content: center; margin-top: 10px;">
+                                        <i class="fas fa-bolt" style="color: var(--accent); font-size: 1.5rem;"></i>
+                                        <i class="fas fa-bolt" style="color: var(--accent); font-size: 1.5rem;"></i>
+                                        <i class="fas fa-bolt" style="color: var(--accent); font-size: 1.5rem;"></i>
+                                        <i class="fas fa-bolt" style="color: #ccc; font-size: 1.5rem;"></i>
+                                        <i class="fas fa-bolt" style="color: #ccc; font-size: 1.5rem;"></i>
+                                    </div>
+                                </div>
+                                <div style="flex: 1; background-color: var(--light); padding: 15px; border-radius: 10px; text-align: center;">
+                                    <h4>Adiestramiento</h4>
+                                    <div style="display: flex; justify-content: center; margin-top: 10px;">
+                                        <i class="fas fa-star" style="color: var(--accent); font-size: 1.5rem;"></i>
+                                        <i class="fas fa-star" style="color: var(--accent); font-size: 1.5rem;"></i>
+                                        <i class="fas fa-star" style="color: var(--accent); font-size: 1.5rem;"></i>
+                                        <i class="fas fa-star" style="color: var(--accent); font-size: 1.5rem;"></i>
+                                        <i class="fas fa-star" style="color: #ccc; font-size: 1.5rem;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p>El Golden Retriever es una de las razas más populares y queridas en todo el mundo. Originario de Escocia, fue desarrollado en el siglo XIX para la caza de aves acuáticas.</p>
+                            <p style="margin-top: 10px;">Son conocidos por su naturaleza amigable, inteligente y devota. Son excelentes perros de familia y se llevan bien con niños y otras mascotas.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="teaser-card" style="margin-top: 30px;">
+                    <h3>Próxima raza:</h3>
+                    <div class="teaser-title">P _ _ D _ _ L E</div>
+                    <p>¿Sabes qué raza será la próxima semana?</p>
+                    
+                    <div class="breed-options">
+                        <div class="breed-option" onclick="selectBreedOption(this)">Poodle</div>
+                        <div class="breed-option" onclick="selectBreedOption(this)">Puggle</div>
+                        <div class="breed-option" onclick="selectBreedOption(this)">Pekinés</div>
+                        <div class="breed-option" onclick="selectBreedOption(this)">Puli</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 style="text-align: center; margin-bottom: 20px;">Criadores Registrados</h3>
+                
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: var(--dark); color: white;">
+                            <th style="padding: 12px; text-align: left;">Nombre</th>
+                            <th style="padding: 12px; text-align: left;">Licencia</th>
+                            <th style="padding: 12px; text-align: left;">Razas</th>
+                            <th style="padding: 12px; text-align: left;">Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--gray);">
+                            <td style="padding: 12px;">Golden Dreams</td>
+                            <td style="padding: 12px;">CR-2345-M</td>
+                            <td style="padding: 12px;">Golden Retriever</td>
+                            <td style="padding: 12px;">Madrid</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--gray);">
+                            <td style="padding: 12px;">Border Paradise</td>
+                            <td style="padding: 12px;">CR-6789-B</td>
+                            <td style="padding: 12px;">Border Collie</td>
+                            <td style="padding: 12px;">Barcelona</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--gray);">
+                            <td style="padding: 12px;">Labrador Home</td>
+                            <td style="padding: 12px;">CR-4567-V</td>
+                            <td style="padding: 12px;">Labrador Retriever</td>
+                            <td style="padding: 12px;">Valencia</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Sección Eventos -->
+        <section class="tab-content" id="events">
+            <h2 class="section-title">Eventos y Quedadas</h2>
+            
+            <div class="card">
+                <h3 style="text-align: center; margin-bottom: 20px;">Próximos Eventos</h3>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">15</div>
+                        <div class="event-month">SEP</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Gran Quedada Canina Madrid</h3>
+                        <p><i class="fas fa-map-marker-alt" style="color: var(--secondary);"></i> <span class="event-location">Parque del Retiro, Madrid</span></p>
+                        <p style="margin-top: 10px;">¡Únete a la mayor quedada canina del año! Actividades, concursos y seminarios de adiestramiento.</p>
+                        <button class="btn" style="margin-top: 15px;" onclick="confirmAttendance(this)">
+                            <i class="fas fa-paw"></i> Confirmar asistencia
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">28</div>
+                        <div class="event-month">OCT</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Seminario: Educación Positiva</h3>
+                        <p><i class="fas fa-map-marker-alt" style="color: var(--secondary);"></i> <span class="event-location">Centro Canino Barcelona</span></p>
+                        <p style="margin-top: 10px;">Aprende técnicas de adiestramiento en positivo con la experta Laura Martínez.</p>
+                        <button class="btn" style="margin-top: 15px;" onclick="confirmAttendance(this)">
+                            <i class="fas fa-paw"></i> Confirmar asistencia
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">12</div>
+                        <div class="event-month">NOV</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Concurso de Agility</h3>
+                        <p><i class="fas fa-map-marker-alt" style="color: var(--secondary);"></i> <span class="event-location">Parque Juan Carlos I, Madrid</span></p>
+                        <p style="margin-top: 10px;">Demuestra las habilidades de tu perro en nuestro concurso de agility amateur.</p>
+                        <button class="btn" style="margin-top: 15px;" onclick="confirmAttendance(this)">
+                            <i class="fas fa-paw"></i> Confirmar asistencia
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 style="text-align: center; margin-bottom: 20px;">Crea tu propio evento</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+                    <input type="text" placeholder="Nombre del evento" style="flex: 1; min-width: 200px; padding: 12px; border-radius: 8px; border: 1px solid var(--gray);">
+                    <input type="text" placeholder="Ubicación" style="flex: 1; min-width: 200px; padding: 12px; border-radius: 8px; border: 1px solid var(--gray);">
+                    <input type="date" style="flex: 1; min-width: 200px; padding: 12px; border-radius: 8px; border: 1px solid var(--gray);">
+                </div>
+                <textarea placeholder="Descripción del evento" style="width: 100%; margin: 15px 0; padding: 12px; border-radius: 8px; border: 1px solid var(--gray); height: 100px;"></textarea>
+                <button class="btn btn-accent" style="width: 100%;">
+                    <i class="fas fa-calendar-plus"></i> Crear Evento
+                </button>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2023 DogMeet - Todos los derechos reservados</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">La aplicación canina más completa para dueños de perros</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "name": "dogmeet-app",
+  "version": "1.0.0",
+  "description": "Aplicación de red social canina para dueños de perros",
+  "main": "public/index.html",
+  "scripts": {
+    "start": "npx http-server public -p 3000 -o",
+    "dev": "npx live-server public --port=3000",
+    "build": "echo 'Build process would go here'",
+    "test": "echo 'Tests would go here'"
+  },
+  "keywords": [
+    "dogs",
+    "social-network",
+    "pets",
+    "community",
+    "canine"
+  ],
+  "author": "DogMeet Team",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "chart.js": "^4.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dogmeet/dogmeet-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dogmeet/dogmeet-app/issues"
+  },
+  "homepage": "https://github.com/dogmeet/dogmeet-app#readme"
+}
