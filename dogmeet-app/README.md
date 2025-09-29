@@ -120,30 +120,19 @@ La aplicación está optimizada para:
 - [ ] Sistema de pagos
 - [ ] Aplicación móvil
 
-## 🤝 Contribución
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
 ## 📄 Licencia
 
 Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
 
 ## 📞 Contacto
 
-- **Email**: info@dogmeet.com
+- **Email**: a.martelrodriguez@gmail.com
 - **Website**: https://dogmeet.com
 - **Twitter**: @DogMeetApp
 
 ## 🙏 Agradecimientos
 
-- Unsplash por las imágenes de perros
-- Font Awesome por los iconos
-- Google Fonts por las tipografías
-- La comunidad de desarrolladores web
+- La comunidad de desarrolladores.
 
 ---
 
